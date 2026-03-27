@@ -20,12 +20,10 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-main); background: var(--black); color: var(--white); overflow-x: hidden; direction: rtl; }
 
-  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--red-light); border-radius: 2px; }
 
-  /* NAVBAR */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 16px 24px;
     display: flex; justify-content: space-between; align-items: center;
@@ -37,7 +35,6 @@
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a { color: var(--gray-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-  /* HERO */
   #hero {
     min-height: 100vh; display: flex; align-items: center; position: relative; padding: 100px 24px 60px;
     background: radial-gradient(ellipse at 30% 50%, rgba(139,16,16,0.12) 0%, transparent 70%), var(--black);
@@ -49,31 +46,63 @@
   .hero-main-logo { width: 100%; max-width: 450px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); animation: float 3s ease-in-out infinite; }
   @keyframes float { 0%, 100% { transform: translateY(0px) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
 
-  /* SECTION SHARED */
   section { padding: 100px 24px; }
   .section-header { text-align: center; margin-bottom: 64px; }
   .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 16px; }
   .gold-divider { width: 60px; height: 3px; background: var(--red-light); margin: 0 auto 24px; }
 
-  /* FEATURES */
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
   .feature-card { background: var(--dark2); border-radius: 24px; padding: 40px; text-align: center; border: 1px solid rgba(139,16,16,0.15); transition: 0.3s; }
   .feature-card:hover { transform: translateY(-10px); border-color: var(--red-light); }
 
-  /* MENU IMAGE */
   .menu-wrap { max-width: 1000px; margin: 0 auto; border: 2px solid var(--red-light); border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
   .menu-wrap img { width: 100%; height: auto; display: block; }
 
-  /* REVIEWS */
   .review-card { background: var(--dark3); border-radius: 20px; padding: 30px; border-right: 4px solid var(--red-light); margin-bottom: 20px; }
 
-  /* BRANCHES */
-  .branch-card { background: var(--dark2); border-radius: 25px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); }
+  /* BRANCH CARDS */
+  .branch-card {
+    background: var(--dark2);
+    border-radius: 25px;
+    padding: 35px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+  }
+  .branch-card:hover { border-color: rgba(196,32,32,0.4); transform: translateY(-5px); }
+  .branch-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+  .branch-address { color: var(--gray-light); margin: 12px 0 20px; line-height: 1.7; font-size: 0.95rem; }
+  .branch-actions { display: flex; flex-direction: column; gap: 12px; }
+  .branch-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 12px;
+    text-decoration: none; font-weight: 700; font-size: 0.95rem;
+    transition: 0.25s;
+  }
+  .btn-map {
+    background: rgba(196,32,32,0.15);
+    border: 1px solid rgba(196,32,32,0.4);
+    color: var(--red-light);
+  }
+  .btn-map:hover { background: var(--red-light); color: white; }
+  .btn-phone {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--gray-light);
+  }
+  .btn-phone:hover { background: rgba(255,255,255,0.12); color: white; }
 
-  /* FOOTER */
+  /* MAP EMBED */
+  .branch-map {
+    width: 100%; height: 200px; border-radius: 16px; overflow: hidden;
+    margin-bottom: 20px; border: 1px solid rgba(196,32,32,0.25);
+  }
+  .branch-map iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  /* HERO BUTTONS */
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
   footer { background: var(--dark3); padding: 60px 24px; text-align: center; border-top: 1px solid #222; }
 
-  /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(30px); transition: 0.7s; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -105,7 +134,10 @@
       <div style="color: var(--red-light); font-weight: 700; margin-bottom: 15px;">⭐ تقييم 4.2 من 700+ عميل</div>
       <h1 class="hero-title">ألذ <span class="highlight">شاورما</span><br>في مكة 🔥</h1>
       <p style="color: var(--gray-light); line-height: 1.8; margin-bottom: 40px; font-size: 1.2rem;">طعم ما يتفوت، صوصات مميزة وسر الثوم الخاص بنا، وجودة تستاهل التجربة.</p>
-      <a href="#menu" style="background:var(--red-light); color:white; padding:16px 40px; border-radius:50px; text-decoration:none; font-weight:900; display:inline-block; box-shadow: 0 10px 30px rgba(139,16,16,0.4);">📋 تصفح المنيو الآن</a>
+      <div class="hero-btns">
+        <a href="#menu" style="background:var(--red-light); color:white; padding:16px 40px; border-radius:50px; text-decoration:none; font-weight:900; display:inline-block; box-shadow: 0 10px 30px rgba(139,16,16,0.4);">📋 تصفح المنيو الآن</a>
+        <a href="#location" style="background:transparent; color:var(--white); padding:16px 36px; border-radius:50px; text-decoration:none; font-weight:900; display:inline-block; border: 2px solid rgba(255,255,255,0.25); transition:0.3s;" onmouseover="this.style.borderColor='#C42020';this.style.color='#C42020'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='white'">📍 فروعنا</a>
+      </div>
     </div>
     <div class="hero-image-wrap">
       <img src="logo.png" alt="شاورما سندباد" class="hero-main-logo">
@@ -146,16 +178,45 @@
 <section id="location">
   <div class="section-header fade-in"><h2 class="section-title">مواقعنا 📍</h2></div>
   <div class="features-grid">
+
     <div class="branch-card fade-in">
-      <h3>فرع التنعيم</h3>
-      <p style="color:var(--gray-light); margin: 15px 0;">زهرة العمرة ممشا، مكة المكرمة</p>
-      <a href="tel:0500040790" style="color:var(--red-light); text-decoration:none; font-weight:700;">📞 0500040790</a>
+      <h3>🌯 فرع التنعيم</h3>
+      <p class="branch-address">زهرة العمرة ممشى التنعيم مكة المكرمة 21955</p>
+      <div class="branch-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.4!2d39.7868425!3d21.513573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15dc21d6e12107f1%3A0x63526b8f2a7964c9!2z2LQgYXdyIG1hIHNpbmRiYWQ!5e0!3m2!1sar!2ssa!4v1700000000000"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="branch-actions">
+        <a href="https://maps.app.goo.gl/qw865pWb2r24u6xA7" target="_blank" class="branch-btn btn-map">
+          📍 افتح في خرائط Google
+        </a>
+        <a href="tel:0500040790" class="branch-btn btn-phone">
+          📞 0500040790
+        </a>
+      </div>
     </div>
+
     <div class="branch-card fade-in">
-      <h3>فرع النوارية</h3>
-      <p style="color:var(--gray-light); margin: 15px 0;">النوارية، مكة المكرمة</p>
-      <a href="tel:0545605584" style="color:var(--red-light); text-decoration:none; font-weight:700;">📞 0545605584</a>
+      <h3>🌯 فرع النوارية</h3>
+      <p class="branch-address">النوارية، مكة المكرمة</p>
+      <div class="branch-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3708.8!2d39.7773704!3d21.5548807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c1f3004854348d%3A0xae1a54da2cd97b1c!2z2LQgYXdyIG1hIHNpbmRiYWQgbmF3YXJpeWE!5e0!3m2!1sar!2ssa!4v1700000000001"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="branch-actions">
+        <a href="https://maps.app.goo.gl/1bRBYWD6K4hD1Ya79" target="_blank" class="branch-btn btn-map">
+          📍 افتح في خرائط Google
+        </a>
+        <a href="tel:0545605584" class="branch-btn btn-phone">
+          📞 0545605584
+        </a>
+      </div>
     </div>
+
   </div>
 </section>
 
