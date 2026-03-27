@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="شاورما سندباد - ألذ شاورما في مكة المكرمة. صوصات مميزة، جودة عالية، أسعار مناسبة. اطلب الآن!">
+<meta name="description" content="شاورما سندباد - ألذ شاورما في مكة المكرمة. صوصات مميزة، جودة عالية، أسعار مناسبة.">
 <title>شاورما سندباد | ألذ شاورما في مكة 🔥</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,9 +15,15 @@
     --red-bright: #B01818; --red-light: #C42020; --gray: #886666; --gray-light: #D4C4C4;
     --font-main: 'Cairo', 'Tajawal', sans-serif;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-main); background: var(--black); color: var(--white); overflow-x: hidden; direction: rtl; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red-light); border-radius: 2px; }
 
   /* NAVBAR */
   nav {
@@ -23,8 +31,9 @@
     display: flex; justify-content: space-between; align-items: center;
     background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(139,16,16,0.2);
   }
-  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo img { height: 50px; width: auto; }
+  .logo { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo img { height: 45px; width: auto; }
+  .logo span { color: var(--white); font-weight: 900; font-size: 1.4rem; }
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a { color: var(--gray-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
@@ -40,130 +49,119 @@
   .hero-main-logo { width: 100%; max-width: 450px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); animation: float 3s ease-in-out infinite; }
   @keyframes float { 0%, 100% { transform: translateY(0px) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
 
-  /* MENU SECTION - IMAGE ONLY */
-  #menu { background: var(--black); padding: 100px 24px; }
-  .menu-image-card {
-    max-width: 1000px; margin: 0 auto; border: 2px solid var(--red-light);
-    border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-  }
-  .menu-image-card img { width: 100%; height: auto; display: block; }
-
-  /* SECTIONS & BUTTONS */
+  /* SECTION SHARED */
   section { padding: 100px 24px; }
   .section-header { text-align: center; margin-bottom: 64px; }
   .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 16px; }
   .gold-divider { width: 60px; height: 3px; background: var(--red-light); margin: 0 auto 24px; }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--red-light), var(--red)); color: var(--white);
-    padding: 16px 34px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-  }
 
   /* FEATURES */
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-  .feature-card { background: var(--dark2); border-radius: 24px; padding: 36px 28px; text-align: center; border: 1px solid rgba(139,16,16,0.15); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+  .feature-card { background: var(--dark2); border-radius: 24px; padding: 40px; text-align: center; border: 1px solid rgba(139,16,16,0.15); transition: 0.3s; }
+  .feature-card:hover { transform: translateY(-10px); border-color: var(--red-light); }
 
-  /* WHATSAPP FLOAT */
-  .whatsapp-float {
-    position: fixed; bottom: 28px; left: 28px; z-index: 998; width: 60px; height: 60px;
-    background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 32px rgba(37,211,102,0.5); animation: pulse-wa 2.5s infinite;
-  }
-  @keyframes pulse-wa { 0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.5); } 50% { box-shadow: 0 8px 50px rgba(37,211,102,0.8); } }
+  /* MENU IMAGE */
+  .menu-wrap { max-width: 1000px; margin: 0 auto; border: 2px solid var(--red-light); border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
+  .menu-wrap img { width: 100%; height: auto; display: block; }
 
+  /* REVIEWS */
+  .review-card { background: var(--dark3); border-radius: 20px; padding: 30px; border-right: 4px solid var(--red-light); margin-bottom: 20px; }
+
+  /* BRANCHES */
+  .branch-card { background: var(--dark2); border-radius: 25px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); }
+
+  /* FOOTER */
+  footer { background: var(--dark3); padding: 60px 24px; text-align: center; border-top: 1px solid #222; }
+
+  /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(30px); transition: 0.7s; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
-  
+
   @media (max-width: 768px) {
+    .nav-links { display: none; }
     .hero-content { grid-template-columns: 1fr; text-align: center; }
     .hero-image-wrap { order: -1; }
-    .nav-links { display: none; }
   }
 </style>
 </head>
 <body>
 
-<a href="https://wa.me/966500040790" class="whatsapp-float" target="_blank">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
-</a>
-
 <nav id="navbar">
   <a href="#" class="logo">
-    <img src="logo.jpg" alt="لوجو سندباد">
-    <span style="color:white">سندباد</span>
+    <img src="logo.png" alt="لوجو سندباد">
+    <span>سندباد</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#features">لماذا سندباد؟</a></li>
+    <li><a href="#hero">الرئيسية</a></li>
+    <li><a href="#features">لماذا نحن؟</a></li>
     <li><a href="#menu">المنيو</a></li>
-    <li><a href="#location">الموقع</a></li>
+    <li><a href="#location">الفروع</a></li>
   </ul>
-  <a href="https://wa.me/966500040790" class="btn-primary" style="padding: 10px 22px; font-size: 0.8rem;">اطلب الآن</a>
 </nav>
 
 <section id="hero">
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">⭐ تقييم 4.2 من 700+ عميل</div>
+      <div style="color: var(--red-light); font-weight: 700; margin-bottom: 15px;">⭐ تقييم 4.2 من 700+ عميل</div>
       <h1 class="hero-title">ألذ <span class="highlight">شاورما</span><br>في مكة 🔥</h1>
-      <p style="color: var(--gray-light); line-height: 1.8; margin-bottom: 40px;">طعم ما يتفوت، صوصات مميزة وسر الثوم الخاص بنا، وجودة تستاهل التجربة في كل قضمة.</p>
-      <div class="hero-buttons">
-        <a href="#menu" class="btn-primary">📋 شوف المنيو</a>
-        <a href="#location" style="color:white; text-decoration:none; margin-right:20px; font-weight:700">📍 فروعنا</a>
-      </div>
+      <p style="color: var(--gray-light); line-height: 1.8; margin-bottom: 40px; font-size: 1.2rem;">طعم ما يتفوت، صوصات مميزة وسر الثوم الخاص بنا، وجودة تستاهل التجربة.</p>
+      <a href="#menu" style="background:var(--red-light); color:white; padding:16px 40px; border-radius:50px; text-decoration:none; font-weight:900; display:inline-block; box-shadow: 0 10px 30px rgba(139,16,16,0.4);">📋 تصفح المنيو الآن</a>
     </div>
     <div class="hero-image-wrap">
-      <img src="logo.jpg" alt="شاورما سندباد" class="hero-main-logo">
+      <img src="logo.png" alt="شاورما سندباد" class="hero-main-logo">
     </div>
   </div>
 </section>
 
 <section id="features">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">لماذا نحن؟</span>
-      <h2 class="section-title">الفرق في <span style="color:var(--red-light)">التفاصيل</span></h2>
-      <div class="gold-divider"></div>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in"><h3>🧄 صوصات مميزة</h3><p>صوص الثوم اللي الكل يجي عشانه.</p></div>
-      <div class="feature-card fade-in"><h3>🧼 نظافة تامة</h3><p>نظافة المطبخ هي أولويتنا القصوى.</p></div>
-      <div class="feature-card fade-in"><h3>💰 أسعار تنافسية</h3><p>أفضل جودة بأفضل سعر في مكة.</p></div>
-    </div>
+  <div class="section-header fade-in">
+    <h2 class="section-title">لماذا <span style="color:var(--red-light)">سندباد؟</span></h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card fade-in"><h3>🧄 صوصات سرية</h3><p>نكهات صوص الثوم الأصلية التي تميزنا.</p></div>
+    <div class="feature-card fade-in"><h3>🧼 نظافة فائقة</h3><p>نلتزم بأعلى معايير الجودة والنظافة.</p></div>
+    <div class="feature-card fade-in"><h3>💰 قيمة حقيقية</h3><p>أفضل جودة شاورما مقابل السعر.</p></div>
   </div>
 </section>
 
 <section id="menu">
-  <div class="container">
-    <div class="section-header fade-in">
-      <h2 class="section-title">إختر <span style="color:var(--red-light)">شاورمتك</span> 🌯</h2>
-      <div class="gold-divider"></div>
-    </div>
-    <div class="menu-image-card fade-in">
-      <img src="menu.jpg" alt="منيو شاورما سندباد">
-    </div>
+  <div class="section-header fade-in">
+    <h2 class="section-title">المنيو <span style="color:var(--red-light)">الكامل</span> 🌯</h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="menu-wrap fade-in">
+    <img src="menu.png" alt="منيو سندباد">
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="section-header fade-in"><h2 class="section-title">آراء <span style="color:var(--red-light)">العملاء</span> ⭐</h2></div>
+  <div class="features-grid">
+    <div class="review-card fade-in"><p>"أفضل شاورما مكسيكي جربتها في مكة، الصوص بطل!"</p><br><strong>- فيصل القرشي</strong></div>
+    <div class="review-card fade-in"><p>"النظافة عندهم تفتح النفس والطلب يوصل حار."</p><br><strong>- أحمد العتيبي</strong></div>
   </div>
 </section>
 
 <section id="location">
-  <div class="container">
-    <div class="section-header fade-in"><h2 class="section-title">فروعنا 📍</h2></div>
-    <div class="features-grid">
-        <div class="feature-card fade-in" style="text-align:right">
-            <h3>فرع التنعيم</h3>
-            <p>زهرة العمرة ممشا، مكة 21955</p>
-            <p>0500040790</p>
-        </div>
-        <div class="feature-card fade-in" style="text-align:right">
-            <h3>فرع النوارية</h3>
-            <p>النوارية، مكة المكرمة</p>
-            <p>0545605584</p>
-        </div>
+  <div class="section-header fade-in"><h2 class="section-title">مواقعنا 📍</h2></div>
+  <div class="features-grid">
+    <div class="branch-card fade-in">
+      <h3>فرع التنعيم</h3>
+      <p style="color:var(--gray-light); margin: 15px 0;">زهرة العمرة ممشا، مكة المكرمة</p>
+      <a href="tel:0500040790" style="color:var(--red-light); text-decoration:none; font-weight:700;">📞 0500040790</a>
+    </div>
+    <div class="branch-card fade-in">
+      <h3>فرع النوارية</h3>
+      <p style="color:var(--gray-light); margin: 15px 0;">النوارية، مكة المكرمة</p>
+      <a href="tel:0545605584" style="color:var(--red-light); text-decoration:none; font-weight:700;">📞 0545605584</a>
     </div>
   </div>
 </section>
 
-<footer style="text-align:center; padding:60px 24px; border-top: 1px solid #222;">
-  <img src="logo.jpg" alt="سندباد" style="height:60px; margin-bottom:20px;">
-  <p style="color:var(--gray);">© 2026 شاورما سندباد — مكة المكرمة 🕌</p>
+<footer>
+  <img src="logo.png" alt="سندباد"><br><br>
+  <p style="color:var(--gray-light);">© 2026 شاورما سندباد — صنع بكل فخر في مكة المكرمة 🕌</p>
 </footer>
 
 <script>
@@ -174,5 +172,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
